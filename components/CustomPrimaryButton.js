@@ -5,10 +5,9 @@ const CustomPrimaryButton = (props) => {
   return (
     <View className="rounded-2xl overflow-hidden my-2 mx-2">
       <Pressable
-        className="bg-pink-800 shadow-lg text-lg overflow-hidden  rounded-2xl  py-2 px-12 "
+        className="bg-violet-500 shadow-lg text-lg overflow-hidden  rounded-2xl  py-2 px-12 "
         onPress={props.pressFunction}
         android_ripple={{ color: "#ff99009c" }}
-       
       >
         <View className="">
           <Text className="text-white text-lg">{props.children}</Text>
