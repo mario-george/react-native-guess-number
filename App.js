@@ -8,6 +8,7 @@ import {
   ScrollView,
   FlatList,
   Pressable,
+  SafeAreaView,
   ImageBackground,
 } from "react-native";
 import StartGame from "./screens/StartGame";
@@ -15,7 +16,14 @@ import Game from "./screens/Game";
 import GameOver from "./screens/GameOver";
 import { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
+/* 
+!important
+DONT MARK INVALID FILES TO BE SCANNED BY NATIVEWIND
+run expo start -c
+-c cleans the cache made by nativewind so that the routes can be updated according to the contents array
+also it is recommended to use npx expo instead
 
+*/
 export default function App() {
   const [value, setValue] = useState();
 
@@ -30,11 +38,15 @@ export default function App() {
         className="flex-1"
         imageStyle={{ opacity: 0.15 }}
         resizeMode="cover"
-        source={require("./assets/images/")}
+        source=  {require("./assets/images/dice.jpg")}
       >
+        <SafeAreaView className="flex-1 pt-12">
+
         {screen}
+        </SafeAreaView>
       </ImageBackground>
     </LinearGradient>
+
   );
 }
 
