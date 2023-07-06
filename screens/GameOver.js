@@ -10,3 +10,5 @@ const GameOver=()=>{
     </View>
 }
 export default GameOver
+
+/* Nested Text inherit classes from parent Text element but Text can not wrap view */

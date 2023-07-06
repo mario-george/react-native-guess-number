@@ -2,6 +2,9 @@ import { View, TextInput, Text, Alert, StyleSheet } from "react-native";
 import { useState } from "react";
 import CustomPrimaryButton from "../components/CustomPrimaryButton";
 import Colors from "../components/colors";
+import Title from "../components/Title";
+import Card from "../components/Card";
+import InformationText from "../components/InformationText";
 const StartGame = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
   const resetValueHandler = () => {
@@ -33,10 +36,8 @@ const StartGame = (props) => {
   };
   return (
     <View className="items-center mt-8 ">
-      <View
-        style={styles.shadowContainer}
-        className={`bg-[#ffb24ef2] rounded-lg  shadow-md shadow-black/100 items-center  w-[90%] p-4`}
-      >
+      <Title>Guess My Number</Title>
+      <Card>
         <TextInput
           maxLength={2}
           keyboardType="number-pad"
@@ -47,6 +48,7 @@ const StartGame = (props) => {
           autoCapitalize="none"
           value={enteredValue}
         />
+        <InformationText>Enter a number</InformationText>
         <View className="mt-3 flex-row space-x-3 ">
           <CustomPrimaryButton pressFunction={resetValueHandler}>
             Reset
@@ -55,19 +57,11 @@ const StartGame = (props) => {
             Confirm
           </CustomPrimaryButton>
         </View>
-      </View>
+      </Card>
     </View>
   );
 };
-const styles = StyleSheet.create({
-  shadowContainer: {
-    elevation: 12,
-    // shadowColor: "black",
-    // shadowOpacity: 4,
-    // shadowOffset: 4,
-    // shadowRadius: 6,
-  },
-});
+
 /* 
 elevation is shadow for android
  shadow for ios controlled by properties :
