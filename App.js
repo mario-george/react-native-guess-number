@@ -30,10 +30,12 @@ also it is recommended to use npx expo instead
 */
 export default function App() {
   const [value, setValue] = useState();
-  const [renderedScreen, setRenderedScreen] = useState("StartGame");
+  const [renderedScreen, setRenderedScreen] = useState("main");
+  const [roundsGuessed, setRoundsGuessed] = useState(0);
   const [fontsLoaded] = useFonts({
     montserratItalic: require("./assets/fonts/Monsterrat/Montserrat-Italic-VariableFont_wght.ttf"),
-    montserrat: require("./assets/fonts/Monsterrat/Montserrat-VariableFont_wght.ttf"),
+    montserrat: require("./assets/fonts/Monsterrat/static/Montserrat-Regular.ttf"),
+    "montserrat-bold": require("./assets/fonts/Monsterrat/static/Montserrat-Bold.ttf"),
   });
 
   useEffect(() => {
@@ -49,15 +51,26 @@ export default function App() {
     };
     loaded();
   }, [fontsLoaded]);
-  let screen = <StartGame setValue={setValue} />;
-  if (value) {
+  let screen = (
+    <StartGame setRenderedScreen={setRenderedScreen} setValue={setValue} />
+  );
+
+  if (renderedScreen == "main") {
+    screen = (
+      <StartGame setRenderedScreen={setRenderedScreen} setValue={setValue} />
+    );
+  }
+
+  if (value && renderedScreen == "Game") {
     screen = (
       <Game choosenNumber={value} setRenderedScreen={setRenderedScreen} />
     );
   }
   console.log(renderedScreen);
   if (renderedScreen == "GameOver") {
-    screen = <GameOver />;
+    screen = (
+      <GameOver setRenderedScreen={setRenderedScreen} choosenNumber={value} />
+    );
   }
   if (!fontsLoaded) {
     return <View className="bg-white" />;
@@ -65,7 +78,7 @@ export default function App() {
   }
   return (
     // rgb(245,158,11)
-    <LinearGradient colors={["rgb(245,158,11)", "#ff0000"]} className="flex-1">
+    <LinearGradient colors={["#00c6ff", "#0072ff"]} className="flex-1">
       <ImageBackground
         className="flex-1"
         imageStyle={{ opacity: 0.15 }}

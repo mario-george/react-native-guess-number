@@ -30,6 +30,7 @@ const StartGame = (props) => {
     }
     console.log("valid number");
     props.setValue(enteredValue);
+    props.setRenderedScreen("Game");
   };
   const updateValueHandler = (text) => {
     setEnteredValue(text);
@@ -38,6 +39,10 @@ const StartGame = (props) => {
     <View className="items-center mt-8 ">
       <Title>Guess My Number</Title>
       <Card>
+        <InformationText textClass={" text-2xl"} textFont={"montserrat-bold"}>
+          Enter a number
+        </InformationText>
+
         <TextInput
           maxLength={2}
           keyboardType="number-pad"
@@ -48,7 +53,6 @@ const StartGame = (props) => {
           autoCapitalize="none"
           value={enteredValue}
         />
-        <InformationText>Enter a number</InformationText>
         <View className="mt-3 flex-row space-x-3 ">
           <CustomPrimaryButton pressFunction={resetValueHandler}>
             Reset
