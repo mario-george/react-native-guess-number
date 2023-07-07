@@ -17,7 +17,7 @@ import GameOver from "./screens/GameOver";
 import { useState, useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { useFonts } from "expo-font";
-import AppLoading from "expo-app-loading";
+import { AppLoading } from 'expo';
 
 import * as SplashScreen from "expo-splash-screen";
 /* 
@@ -37,7 +37,10 @@ export default function App() {
     montserrat: require("./assets/fonts/Monsterrat/static/Montserrat-Regular.ttf"),
     "montserrat-bold": require("./assets/fonts/Monsterrat/static/Montserrat-Bold.ttf"),
   });
-
+  const gameOverHandler = (guessRoundsNumber) => {
+    setRenderedScreen("GameOver");
+    setRoundsGuessed(guessRoundsNumber);
+  };
   useEffect(() => {
     const loaded = async () => {
       try {
@@ -54,7 +57,11 @@ export default function App() {
   let screen = (
     <StartGame setRenderedScreen={setRenderedScreen} setValue={setValue} />
   );
-
+  const startNewGameHandler = () => {
+    setRenderedScreen("main");
+    setRoundsGuessed(0);
+    setValue(null);
+  };
   if (renderedScreen == "main") {
     screen = (
       <StartGame setRenderedScreen={setRenderedScreen} setValue={setValue} />
@@ -62,18 +69,19 @@ export default function App() {
   }
 
   if (value && renderedScreen == "Game") {
-    screen = (
-      <Game choosenNumber={value} setRenderedScreen={setRenderedScreen} />
-    );
+    screen = <Game choosenNumber={value} gameOverHandler={gameOverHandler} />;
   }
-  console.log(renderedScreen);
   if (renderedScreen == "GameOver") {
     screen = (
-      <GameOver setRenderedScreen={setRenderedScreen} choosenNumber={value} />
+      <GameOver
+        startNewGameHandler={startNewGameHandler}
+        choosenNumber={value}
+        roundsGuessed={roundsGuessed}
+      />
     );
   }
   if (!fontsLoaded) {
-    return <View className="bg-white" />;
+    return null;
     // splash screen
   }
   return (

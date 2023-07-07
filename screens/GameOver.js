@@ -1,7 +1,7 @@
 import { Text, View, Image } from "react-native";
 import CustomPrimaryButton from "../components/CustomPrimaryButton";
 import Title from "../components/Title";
-const GameOver = ({ choosenNumber, setRenderedScreen }) => {
+const GameOver = ({ choosenNumber, startNewGameHandler, roundsGuessed }) => {
   return (
     <View className="flex-1 justify-center items-center">
       <Title>Game Over !</Title>
@@ -21,7 +21,7 @@ const GameOver = ({ choosenNumber, setRenderedScreen }) => {
           className="text-amber-400"
           style={{ fontFamily: "montserrat-bold" }}
         >
-          X
+          {roundsGuessed}
         </Text>{" "}
         rounds to guess the number
         <Text
@@ -32,7 +32,7 @@ const GameOver = ({ choosenNumber, setRenderedScreen }) => {
         </Text>
         .
       </Text>
-      <CustomPrimaryButton pressFunction={setRenderedScreen.bind(this, "main")}>
+      <CustomPrimaryButton pressFunction={startNewGameHandler}>
         Start a New Game
       </CustomPrimaryButton>
     </View>

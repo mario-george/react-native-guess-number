@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from "react-native";
 
-function Card({ children ,viewStyle}) {
+function Card({ children, viewStyle }) {
   return (
     <View
       style={styles.shadowContainer}
-      className={`bg-[#52007d] rounded-lg  shadow-md shadow-black/100 items-center mx-auto w-[90%] p-4 ${viewStyle}`}
+      className={`bg-sky-200 rounded-lg  shadow-md shadow-black/100 items-center mx-auto w-[90%] p-4 ${viewStyle}`}
     >
       {children}
     </View>

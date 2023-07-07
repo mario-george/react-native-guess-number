@@ -39,14 +39,17 @@ const StartGame = (props) => {
     <View className="items-center mt-8 ">
       <Title>Guess My Number</Title>
       <Card>
-        <InformationText textClass={" text-2xl"} textFont={"montserrat-bold"}>
+        <InformationText
+          textClass={" text-2xl text-gray-600"}
+          textFont={"montserrat-bold"}
+        >
           Enter a number
         </InformationText>
 
         <TextInput
           maxLength={2}
           keyboardType="number-pad"
-          className={`border-b-2  border-b-[#a11919] mx-auto w-16 text-center text-3xl text-[#a11919] pb-1 mt-4`}
+          className={`border-b-2  border-b-black mx-auto w-16 text-center text-4xl text-black  pb-1 mt-4`}
           onChangeText={updateValueHandler}
           // those doesn't have an effect here but for future textinputs
           autoCorrect={false}

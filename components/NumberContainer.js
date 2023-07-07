@@ -1,10 +1,10 @@
 import Colors from "./colors";
 import { View, TextInput, Text } from "react-native";
 
-const NumberContainer = ({ children }) => {
+const NumberContainer = ({ children ,textStyle,viewStyle }) => {
   return (
-    <View className={`border-4 border-[${Colors.color2}] p-8  m-4 rounded-lg`}>
-      <Text className={`text-[${Colors.color2}] text-3xl text-center`}>{children}</Text>
+    <View className={`border-4 bg-gray-600 border-amber-400 px-8 py-6 items-center justify-center  m-4 rounded-lg ${viewStyle}`}>
+      <Text className={`text-amber-400 text-4xl text-center font-montserrat-bold ${textStyle}`} style={{fontFamily:"montserrat-bold"}}>{children}</Text>
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import Colors from "./colors";
 const Title = ({ children, textStyle, viewStyle }) => {
   // style can take an array and will parse from left to right
@@ -6,7 +6,7 @@ const Title = ({ children, textStyle, viewStyle }) => {
   return (
     <View className="border-white border-2  font-bold py-4 px-12 mb-4 mt-4 ">
       <Text
-        className={` text-white text-center text-4xl`}
+        className={` text-white text-center text-4xl ${textStyle}`}
         style={StyleSheet.create({
           fontFamily: "montserrat",
         })}
